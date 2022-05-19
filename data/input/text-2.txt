@@ -1,0 +1,26 @@
+The 3rd International Workshop on Machine Learning and Knowledge Graphs (MLKgraphs2021)
+September 27 - 30, 2021 - Linz, Austria
+http://www.dexa.org/mlkgraphs2021
+email: dexa@iiwas.org
+Papers submission: https://easychair.org/conferences/?conf=mlkgraphs2021
+**** IMPORTANT DATES ****
+Paper submission: April 23, 2021 (SHARP)
+Notification of acceptance: June 1, 2021
+Camera-ready copies due: June 30, 2021
+*** PUBLICATION ***
+All accepted papers will be published by Springer in "Communications in Computer and Information
+Science".
+*** SCOPE ***
+Knowledge Graphs are becoming a key technology for large-scale information processing systems
+containing massive collections of interrelated facts. Specifically, Knowledge Graphs provide the means
+for development of the newest data methods for data management, data fusion, data merging, and
+graph optimization and modeling, serving as a source of high quality data and a base for web-scale
+information integration.
+The 3rd International Workshop on Machine Learning and Knowledge Graphs aims to be a meeting
+point for researchers and practitioners working on the latest advances in the intersection of machine
+learning technologies and knowledge graphs. Therefore, we welcome submissions of novel research
+that brings together the two topics of Machine Learning (ML) and Knowledge Graphs (KGs) either
+applying ML models for semantic data management structures (like KGs or ontologies), or by
+presenting newly assembled Knowledge Graphs that support the task of Machine Learning for certain
+application domains. Examples areas are Business Analytics, Customer Relationship Management,
+Fault Detection, Industry 4.0, or Social Networking.
