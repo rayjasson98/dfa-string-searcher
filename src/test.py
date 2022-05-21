@@ -86,6 +86,14 @@ def generate_results(matched_strings, text):
         stats[string]["count"] += 1
         stats[string]["positions"].append((start, end))
 
+    stats_table = generate_stats_table(stats)
+
+    print(colorized_text + '\n\n')
+    print(Fore.YELLOW + 'Matched Strings Statistics:\n\n' + Fore.RESET)
+    print(stats_table, "\n")
+
+
+def generate_stats_table(stats):
     stats_table = PrettyTable()
     stats_table.field_names = ["Matched String", "No. of Occurrences",
                                "Positions (start index: inclusive, end index: exclusive)"]
@@ -97,9 +105,7 @@ def generate_results(matched_strings, text):
                         stat["positions"])
         stats_table.add_row([matched_string, stat["count"], "\n".join(positions)])
 
-    print(colorized_text + '\n\n')
-    print(Fore.YELLOW + 'Matched Strings Statistics:\n\n' + Fore.RESET)
-    print(stats_table, "\n")
+    return stats_table
 
 
 test('names.txt', 'text-1.txt')
