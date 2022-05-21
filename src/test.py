@@ -67,30 +67,56 @@ def construct_dfa(strings):
 
 
 def generate_results(matched_strings, text):
-    colorized_text = text
+    positions = []
     stats = defaultdict(lambda: {
         "count": 0,
         "positions": []
     })
 
-    # Reverse the matched strings to colorize the text from the end,
-    # ensuring correct coloring of matched strings
-    for matched_string in reversed(list(matched_strings)):
+    for matched_string in matched_strings:
         string = matched_string["value"]
         start = matched_string["start"]
         end = matched_string["end"]
 
-        colorized_text = colorized_text[:start] + Fore.GREEN + \
-            colorized_text[start:end] + Fore.RESET + colorized_text[end:]
+        positions.append([start, end])
 
         stats[string]["count"] += 1
         stats[string]["positions"].append((start, end))
 
-    stats_table = generate_stats_table(stats)
-
+    positions = merge_overlapped(positions)
+    colorized_text = colorize_text(text, positions)
     print(colorized_text + '\n\n')
+
+    stats_table = generate_stats_table(stats)
     print(Fore.YELLOW + 'Matched Strings Statistics:\n\n' + Fore.RESET)
     print(stats_table, "\n")
+
+
+def merge_overlapped(intervals):
+    intervals.sort(key=lambda interval: interval[0])
+    merged_intervals = []
+
+    for interval in intervals:
+        if not merged_intervals or merged_intervals[-1][1] < interval[0]:
+            merged_intervals.append(interval)
+        else:
+            merged_intervals[-1][1] = max(merged_intervals[-1][1], interval[1])
+
+    return merged_intervals
+
+
+def colorize_text(text, positions):
+    colorized_text = text
+
+    # Reverse the matched strings to colorize the text from the end,
+    # ensuring correct coloring of matched strings
+    for position in reversed(positions):
+        start, end = position[0], position[1]
+
+        colorized_text = colorized_text[:start] + Fore.GREEN + \
+            colorized_text[start:end] + Fore.RESET + colorized_text[end:]
+
+    return colorized_text
 
 
 def generate_stats_table(stats):
