@@ -19,7 +19,7 @@ class State():
 
 
 class AhoCorasickAutomaton():
-    def __init__(self, case_insensitive=True):
+    def __init__(self, case_insensitive=False):
         self.initial_state = State(0)
         self.counter = 1
         self.finalized = False
