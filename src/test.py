@@ -38,7 +38,7 @@ def read_corpus(corpus_file_path):
     print(Fore.YELLOW + 'Text Corpus (String Patterns):\n\n' + Fore.RESET)
 
     for string in strings:
-        print(string)
+        print(f'"{string}"')
 
     return strings
 
