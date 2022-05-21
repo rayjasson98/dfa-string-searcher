@@ -30,14 +30,16 @@ def test(corpus_file_path, input_file_path):
 
 def read_corpus(corpus_file_path):
     with open(f'../data/corpus/{corpus_file_path}', encoding="utf8") as file:
-        strings = file.readlines()
+        strings = []
+
+        for line in file:
+            strings.append(" " + line.strip() + " ")
 
     print(Fore.YELLOW + 'Text Corpus (String Patterns):\n\n' + Fore.RESET)
 
     for string in strings:
         print(string)
 
-    strings = list(map(str.strip, strings))
     return strings
 
 
