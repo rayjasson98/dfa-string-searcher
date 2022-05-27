@@ -96,28 +96,28 @@ class AhoCorasickAutomaton():
     def search_lps(self, state):
         initial_state = self.initial_state
         parent = state.parent
-        traversed = parent.longest_proper_suffix
+        parent_lps = parent.longest_proper_suffix
 
         while True:
-            if state.char in traversed.transitions and\
-                    traversed.transitions[state.char] is not state:
-                state.longest_proper_suffix = traversed.transitions[state.char]
+            if state.char in parent_lps.transitions and\
+                    parent_lps.transitions[state.char] is not state:
+                state.longest_proper_suffix = parent_lps.transitions[state.char]
                 break
 
-            if traversed is initial_state:
+            if parent_lps is initial_state:
                 state.longest_proper_suffix = initial_state
                 break
 
-            traversed = traversed.longest_proper_suffix
+            parent_lps = parent_lps.longest_proper_suffix
 
-        suffix_state = state.longest_proper_suffix
+        state_lps = state.longest_proper_suffix
 
-        if suffix_state is initial_state:
+        if state_lps is initial_state:
             return
 
-        if suffix_state.longest_proper_suffix is None:
-            self.search_lps(suffix_state)
+        if state_lps.longest_proper_suffix is None:
+            self.search_lps(state_lps)
 
-        for char, next_state in suffix_state.transitions.items():
+        for char, next_state in state_lps.transitions.items():
             if char not in state.transitions:
                 state.transitions[char] = next_state
